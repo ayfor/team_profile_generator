@@ -1,9 +1,12 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const util = require('util')
+const util = require('util');
+const Manager = require('./lib/Manager');
 
 //const htmlGenerator = 
+
+let teamArray = [];
 
 const writeToFile  = util.promisify(fs.writeFile);
 
@@ -40,6 +43,12 @@ function init() {
     //     .catch((err)=> console.log(err));
 
     promptTeamBuilderQuestions()
+        .then(
+            (answers)=>{
+                teamArray.push(new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber));
+                console.log(teamArray);
+            }
+        )
 }
 
 // Function call to initialize app
