@@ -49,6 +49,15 @@ function init() {
                 console.log(teamArray);
             }
         )
+        .then(
+            //Prompt for team building loop to add members to team array
+
+        )
+        .then(
+            //Generate HTML based on team array
+
+        )
+        
 }
 
 // Function call to initialize app
