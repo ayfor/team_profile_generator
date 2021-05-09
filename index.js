@@ -3,6 +3,8 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
 const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
 //const htmlGenerator = 
 
@@ -31,7 +33,7 @@ const startupQuestions = [
     message: "What is the team manager's office number?",
     name: 'managerOfficeNumber',
     }
-]
+];
 
 const selectTeamMemberQuestion = [
     {
@@ -41,22 +43,88 @@ const selectTeamMemberQuestion = [
         choices: ['Engineer', 'Intern','[FINISH]']
 
     }
-]
+];
+
+const engineerQuestions = [
+    {
+        type: 'input',
+        message: "What is the engineer's name?",
+        name: 'engineerName',
+        },
+        {
+        type: 'input',
+        message: "What is the engineer's employee ID?",
+        name: 'engineerId',
+        },
+        {
+        type: 'input',
+        message: "What is the engineer's email address?",
+        name: 'engineerEmail',
+        },
+        {
+        type: 'input',
+        message: "What is the engineer's Github username?",
+        name: 'engineerGithubUsername',
+        }
+];
+
+const internQuestions = [
+    {
+        type: 'input',
+        message: "What is the interns's name?",
+        name: 'internName',
+        },
+        {
+        type: 'input',
+        message: "What is the interns's employee ID?",
+        name: 'internId',
+        },
+        {
+        type: 'input',
+        message: "What is the interns's email address?",
+        name: 'internEmail',
+        },
+        {
+        type: 'input',
+        message: "What is the interns's school name?",
+        name: 'internSchoolName',
+        }
+];
 
 const promptTeamManagerQuestions = () => {return inquirer.prompt(startupQuestions);}
 
 const promptTeamBuilderQuestions = () => {return inquirer.prompt(selectTeamMemberQuestion);}
 
 const addEngineer = () => {
-    //Prompt questions
-    //Create Object
     console.log("Adding Engineer...")
+    //Prompt questions
+    inquirer.prompt(engineerQuestions)
+    .then(
+        (answers)=>{
+            teamArray.push(new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithubUsername));
+            console.log(teamArray);
+        }
+    )
+    .then(
+        ()=>{addTeamMembers();}
+    )
+    
+    
 }
 
 const addIntern = () => {
-    //Prompt questions
-    //Create Object
     console.log("Adding Intern...")
+    //Prompt questions
+    inquirer.prompt(internQuestions)
+    .then(
+        (answers)=>{
+            teamArray.push(new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchoolName));
+            console.log(teamArray);
+        }
+    )
+    .then(
+        ()=>{addTeamMembers();}
+    )
 }
 
 const addTeamMembers = () => {
@@ -66,10 +134,10 @@ const addTeamMembers = () => {
         (answer) => {
             if(answer.teamMemberType === 'Engineer'){
                 addEngineer();
-                addTeamMembers();
+                
             }else if(answer.teamMemberType === 'Intern'){
                 addIntern();
-                addTeamMembers();
+                
             }else{
                 return;
             }
@@ -79,26 +147,31 @@ const addTeamMembers = () => {
 
 
 function init() {
-    
-    // promptTeamBuilderQuestions()
-    //     .then((answers)=>writeToFile('README.md',htmlGenerator(answers)))
-    //     .then(()=>console.log("Successfully Generated README file!"))
-    //     .catch((err)=> console.log(err));
-
     promptTeamManagerQuestions()
         .then(
+            //To create a team, first add the team manager
             (answers)=>{
                 teamArray.push(new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber));
                 console.log(teamArray);
             }
         )
         .then(
-            () => {addTeamMembers();}
+            () => {
+                //Add team members
+                addTeamMembers();
+            }
         )
-        // .then(
-        //     //Generate HTML based on team array
-
-        // )
+        .then(
+            //Generate HTML based on team array
+            () => {
+                console.log("Generating HTML...");
+                writeToFile('./dist/teamProfile.html', )
+            }
+            
+        )
+        .catch(
+            (err) => console.error(err)
+        )
         
 }
 
