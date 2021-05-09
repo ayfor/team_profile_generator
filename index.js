@@ -33,7 +33,50 @@ const startupQuestions = [
     }
 ]
 
-const promptTeamBuilderQuestions = () => {return inquirer.prompt(startupQuestions);}
+const selectTeamMemberQuestion = [
+    {
+        type: 'list',
+        message: 'What type of team member would you like to add?',
+        name: 'teamMemberType',
+        choices: ['Engineer', 'Intern','[FINISH]']
+
+    }
+]
+
+const promptTeamManagerQuestions = () => {return inquirer.prompt(startupQuestions);}
+
+const promptTeamBuilderQuestions = () => {return inquirer.prompt(selectTeamMemberQuestion);}
+
+const addEngineer = () => {
+    //Prompt questions
+    //Create Object
+    console.log("Adding Engineer...")
+}
+
+const addIntern = () => {
+    //Prompt questions
+    //Create Object
+    console.log("Adding Intern...")
+}
+
+const addTeamMembers = () => {
+    //Prompt for team building loop to add members to team array
+    promptTeamBuilderQuestions()
+    .then(
+        (answer) => {
+            if(answer.teamMemberType === 'Engineer'){
+                addEngineer();
+                addTeamMembers();
+            }else if(answer.teamMemberType === 'Intern'){
+                addIntern();
+                addTeamMembers();
+            }else{
+                return;
+            }
+        }
+    )
+}
+
 
 function init() {
     
@@ -42,7 +85,7 @@ function init() {
     //     .then(()=>console.log("Successfully Generated README file!"))
     //     .catch((err)=> console.log(err));
 
-    promptTeamBuilderQuestions()
+    promptTeamManagerQuestions()
         .then(
             (answers)=>{
                 teamArray.push(new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber));
@@ -50,13 +93,12 @@ function init() {
             }
         )
         .then(
-            //Prompt for team building loop to add members to team array
-
+            () => {addTeamMembers();}
         )
-        .then(
-            //Generate HTML based on team array
+        // .then(
+        //     //Generate HTML based on team array
 
-        )
+        // )
         
 }
 
