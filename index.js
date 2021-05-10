@@ -2,9 +2,12 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
+
+
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const generateHTML = require('./src/generateHTML');
 
 //const htmlGenerator = 
 
@@ -139,6 +142,7 @@ const addTeamMembers = () => {
                 addIntern();
                 
             }else{
+                exportHTML(teamArray);
                 return;
             }
         }
@@ -161,18 +165,15 @@ function init() {
                 addTeamMembers();
             }
         )
-        .then(
-            //Generate HTML based on team array
-            () => {
-                console.log("Generating HTML...");
-                writeToFile('./dist/teamProfile.html', )
-            }
-            
-        )
         .catch(
             (err) => console.error(err)
         )
         
+}
+
+function exportHTML(teamArray){
+    console.log("Generating HTML...");
+    writeToFile('./dist/teamProfile.html', generateHTML(teamArray) )
 }
 
 // Function call to initialize app
