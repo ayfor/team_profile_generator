@@ -2,23 +2,6 @@ const Manager = require('../lib/Manager');
 const Engineer = require('../lib/Engineer');
 const Intern = require('../lib/Intern');
 
-const templateCard = `
-<div class="row" style="display: flex; padding: 20px;">
-    <div class="card text-center" style="width: 40%;">
-        <h5 class="card-title" style="width: 100%;">
-            Title
-        </h5>
-        <div class="card-body">
-            <div class="card">
-                <div class="card-body">
-                    This is some text within a card body.
-                </div>
-            </div>            
-        </div>
-    </div>
-</div>
-`;
-
 const generateHTML = (teamArray) => 
 `
 <!DOCTYPE html>
