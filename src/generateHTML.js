@@ -79,7 +79,7 @@ const generateManagerCard = (manager) => {
                 </div>            
                 <div class="card">
                     <div class="card-body">
-                        <p><strong>Email: </strong><span> ${manager.email} </span></p>
+                    <p><strong>Email: </strong><span><a href="mailto:${manager.email}">${manager.email} </a></span></p>
                     </div>
                 </div>            
                 <div class="card">
@@ -106,12 +106,12 @@ const generateEngineerCard = (engineer) => {
                 </div>            
                 <div class="card">
                     <div class="card-body">
-                        <p><strong>Email: </strong><span> ${engineer.email} </span></p>
+                    <p><strong>Email: </strong><span><a href="mailto:${engineer.email}">${engineer.email} </a></span></p>
                     </div>
                 </div>            
                 <div class="card">
                     <div class="card-body">
-                        <p><strong>Github: </strong><span> ${engineer.github} </span></p>
+                        <p><strong>Github: </strong><span> <a href="https://github.com/${engineer.github}">${engineer.github}</a> </span></p>
                     </div>
                 </div>            
             </div>
@@ -133,7 +133,7 @@ const generateInternCard = (intern) => {
             </div>            
             <div class="card">
                 <div class="card-body">
-                    <p><strong>Email: </strong><span> ${intern.email} </span></p>
+                    <p><strong>Email: </strong><span><a href="mailto:${intern.email}">${intern.email} </a></span></p>
                 </div>
             </div>            
             <div class="card">
