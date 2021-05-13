@@ -1,26 +1,4 @@
-const Manager = require('../lib/Manager');
-const Engineer = require('../lib/Engineer');
-const Intern = require('../lib/Intern');
 
-const templateCard = `
-<div class="row" style="display: flex; padding: 20px;">
-    <div class="card text-center" style="width: 40%;">
-        <h5 class="card-title" style="width: 100%;">
-            Title
-        </h5>
-        <div class="card-body">
-            <div class="card">
-                <div class="card-body">
-                    This is some text within a card body.
-                </div>
-            </div>            
-        </div>
-    </div>
-</div>
-`;
-
-const generateHTML = (teamArray) => 
-`
 <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -40,111 +18,76 @@ const generateHTML = (teamArray) =>
             <div style="display: flex; flex-direction: row; justify-content: space-evenly; flex-wrap: wrap;">
 
 
-                ${generateTeamCards(teamArray)}
-            </div>
-        </body>
-    </html>
-`;
-
-const generateTeamCards = (teamArray) => {
-    console.log("Generating team cards...")
-    let cardsHTML = '';
-
-    teamArray.forEach(element => {
-        if(element instanceof Manager){
-            cardsHTML = cardsHTML.concat(generateManagerCard(element));
-        }else if(element instanceof Engineer){
-            cardsHTML = cardsHTML.concat(generateEngineerCard(element));
-        }else if(element instanceof Intern){
-            cardsHTML = cardsHTML.concat(generateInternCard(element));
-        }else{
-            throw("ERROR: Unkown type provided. Please check teamArray.")
-        }
-    });
-
-    return cardsHTML;
-}
-
-const generateManagerCard = (manager) => {
-    return `
+            -
     <div class="card text-center" style="margin: 20px; width: 25%;"> 
             <h5 class="card-title" style="width: 100%; padding: 10px;">
-                <i class="fas fa-user-tie"></i> ${manager.name} : Manager
+                <i class="fas fa-user-tie"></i> Josh : Manager
             </h5>
             <div class="card-body">
                 <div class="card">
                     <div class="card-body">
-                    <p><strong>ID: </strong> <span> ${manager.id} </span></p>
+                    <p><strong>ID: </strong> <span> 01 </span></p>
                     </div>
                 </div>            
                 <div class="card">
                     <div class="card-body">
-                        <p><strong>Email: </strong><span> ${manager.email} </span></p>
+                        <p><strong>Email: </strong><span> josh@josh.com </span></p>
                     </div>
                 </div>            
                 <div class="card">
                     <div class="card-body">
-                        <p><strong>Office Number: </strong><span> ${manager.officeNumber} </span></p>
+                        <p><strong>Office Number: </strong><span> 1202 </span></p>
                     </div>
                 </div>            
             </div>
         </div>
-    `;
-}
-
-const generateEngineerCard = (engineer) => {
-    return `
+    -
     <div class="card text-center" style="margin: 20px; width: 25%;"> 
             <h5 class="card-title" style="width: 100%; padding: 10px;">
-                <i class="fas fa-tools"></i> ${engineer.name} : Engineer
+                <i class="fas fa-tools"></i> T-Dog : Engineer
             </h5>
             <div class="card-body">
                 <div class="card">
                     <div class="card-body">
-                    <p><strong>ID: </strong> <span> ${engineer.id} </span></p>
+                    <p><strong>ID: </strong> <span> 929 </span></p>
                     </div>
                 </div>            
                 <div class="card">
                     <div class="card-body">
-                        <p><strong>Email: </strong><span> ${engineer.email} </span></p>
+                        <p><strong>Email: </strong><span> tay@T.com </span></p>
                     </div>
                 </div>            
                 <div class="card">
                     <div class="card-body">
-                        <p><strong>Github: </strong><span> ${engineer.github} </span></p>
+                        <p><strong>Github: </strong><span> t-dog </span></p>
                     </div>
                 </div>            
             </div>
         </div>
-    `;
-}
-
-const generateInternCard = (intern) => {
-    return `
+    -
     <div class="card text-center" style="margin: 20px; width: 25%;"> 
         <h5 class="card-title" style="width: 100%; padding: 10px;">
-            <i class="fas fa-user-graduate"></i> ${intern.name} : Intern
+            <i class="fas fa-user-graduate"></i> The Intern Guy : Intern
         </h5>
         <div class="card-body">
             <div class="card">
                 <div class="card-body">
-                    <p><strong>ID: </strong> <span> ${intern.id} </span></p>
+                    <p><strong>ID: </strong> <span> 0 </span></p>
                 </div>
             </div>            
             <div class="card">
                 <div class="card-body">
-                    <p><strong>Email: </strong><span> ${intern.email} </span></p>
+                    <p><strong>Email: </strong><span> whocares@gmail.com </span></p>
                 </div>
             </div>            
             <div class="card">
                 <div class="card-body">
-                    <p><strong>School: </strong><span> ${intern.school} </span></p>
+                    <p><strong>School: </strong><span> SchoolDay </span></p>
                 </div>
             </div>            
         </div>
     </div> 
-    `;
-}
-
-
-module.exports = generateHTML;
+    
+            </div>
+        </body>
+    </html>
