@@ -8,7 +8,7 @@ describe("Engineer", () => {
             const testName = "Name";
 
             //Act
-            const obj = new Engineer(testName, 0, "email@email.com");
+            const obj = new Engineer(testName, 0, "email@email.com", "username");
 
             //Assert
             expect(obj.name).toEqual(testName);
@@ -18,7 +18,7 @@ describe("Engineer", () => {
             const testId = 3;
 
             //Act
-            const obj = new Engineer("name", testId, "email@email.com");
+            const obj = new Engineer("name", testId, "email@email.com", "username");
 
             //Assert
             expect(obj.id).toEqual(testId);
@@ -28,7 +28,7 @@ describe("Engineer", () => {
             const testEmail = "email@email.com";
 
             //Act
-            const obj = new Engineer("name", 0, testEmail);
+            const obj = new Engineer("name", 0, testEmail, "username");
 
             //Assert
             expect(obj.email).toEqual(testEmail);
@@ -51,7 +51,7 @@ describe("Engineer", () => {
             const testName = "Name";
 
             //Act
-            const obj = new Engineer(testName, 0, "email@email.com");
+            const obj = new Engineer(testName, 0, "email@email.com", "username");
 
             //Assert
             expect(obj.getName()).toEqual(testName);
@@ -61,7 +61,7 @@ describe("Engineer", () => {
             const testId = 3;
 
             //Act
-            const obj = new Engineer("name", testId, "email@email.com");
+            const obj = new Engineer("name", testId, "email@email.com", "username");
 
             //Assert
             expect(obj.getId()).toEqual(testId);
@@ -71,7 +71,7 @@ describe("Engineer", () => {
             const testEmail = "email@email.com";
 
             //Act
-            const obj = new Engineer("name", 0, testEmail);
+            const obj = new Engineer("name", 0, testEmail, "username");
 
             //Assert
             expect(obj.getEmail()).toEqual(testEmail);
@@ -88,7 +88,7 @@ describe("Engineer", () => {
         });
         it("Should return 'Engineer' with getRole", ()=>{
             
-            const obj = new Engineer("name", 0, "email");
+            const obj = new Engineer("name", 0, "email", "username");
 
             //Assert
             expect(obj.getRole()).toEqual("Engineer");

@@ -8,7 +8,7 @@ describe("Manager", () => {
             const testName = "Name";
 
             //Act
-            const obj = new Manager(testName, 0, "email@email.com");
+            const obj = new Manager(testName, 0, "email@email.com", 0);
 
             //Assert
             expect(obj.name).toEqual(testName);
@@ -18,7 +18,7 @@ describe("Manager", () => {
             const testId = 3;
 
             //Act
-            const obj = new Manager("name", testId, "email@email.com");
+            const obj = new Manager("name", testId, "email@email.com", 0);
 
             //Assert
             expect(obj.id).toEqual(testId);
@@ -28,7 +28,7 @@ describe("Manager", () => {
             const testEmail = "email@email.com";
 
             //Act
-            const obj = new Manager("name", 0, testEmail);
+            const obj = new Manager("name", 0, testEmail, 0);
 
             //Assert
             expect(obj.email).toEqual(testEmail);
@@ -51,7 +51,7 @@ describe("Manager", () => {
             const testName = "Name";
 
             //Act
-            const obj = new Manager(testName, 0, "email@email.com");
+            const obj = new Manager(testName, 0, "email@email.com", 0);
 
             //Assert
             expect(obj.getName()).toEqual(testName);
@@ -61,7 +61,7 @@ describe("Manager", () => {
             const testId = 3;
 
             //Act
-            const obj = new Manager("name", testId, "email@email.com");
+            const obj = new Manager("name", testId, "email@email.com", 0);
 
             //Assert
             expect(obj.getId()).toEqual(testId);
@@ -71,14 +71,14 @@ describe("Manager", () => {
             const testEmail = "email@email.com";
 
             //Act
-            const obj = new Manager("name", 0, testEmail);
+            const obj = new Manager("name", 0, testEmail, 0);
 
             //Assert
             expect(obj.getEmail()).toEqual(testEmail);
         });
         it("Should return 'Manager' with getRole", ()=>{
             
-            const obj = new Manager("name", 0, "email");
+            const obj = new Manager("name", 0, "email", 0);
 
             //Assert
             expect(obj.getRole()).toEqual("Manager");
