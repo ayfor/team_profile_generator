@@ -105,7 +105,6 @@ const addEngineer = () => {
     .then(
         (answers)=>{
             teamArray.push(new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithubUsername));
-            console.log(teamArray);
         }
     )
     .then(
@@ -122,7 +121,6 @@ const addIntern = () => {
     .then(
         (answers)=>{
             teamArray.push(new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchoolName));
-            console.log(teamArray);
         }
     )
     .then(
@@ -156,7 +154,6 @@ function init() {
             //To create a team, first add the team manager
             (answers)=>{
                 teamArray.push(new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber));
-                console.log(teamArray);
             }
         )
         .then(
